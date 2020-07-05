@@ -1,0 +1,6 @@
+com\zhangfeng\security\config\WebSecurityConfig.class
+com\zhangfeng\security\config\WebConfig.class
+com\zhangfeng\security\config\ApplicationConfig.class
+com\zhangfeng\security\controller\LoginController.class
+com\zhangfeng\security\init\SpringSecurityApplicationInitializer.class
+com\zhangfeng\security\init\SpringApplicationInitializer.class
