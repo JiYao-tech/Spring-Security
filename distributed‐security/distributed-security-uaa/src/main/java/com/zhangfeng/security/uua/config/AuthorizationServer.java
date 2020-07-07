@@ -1,6 +1,7 @@
 package com.zhangfeng.security.uua.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
@@ -14,6 +15,7 @@ import org.springframework.security.oauth2.config.annotation.web.configurers.Aut
 import org.springframework.security.oauth2.provider.ClientDetailsService;
 import org.springframework.security.oauth2.provider.code.AuthorizationCodeServices;
 import org.springframework.security.oauth2.provider.code.InMemoryAuthorizationCodeServices;
+import org.springframework.security.oauth2.provider.code.JdbcAuthorizationCodeServices;
 import org.springframework.security.oauth2.provider.token.AuthorizationServerTokenServices;
 import org.springframework.security.oauth2.provider.token.DefaultTokenServices;
 import org.springframework.security.oauth2.provider.token.TokenStore;
@@ -29,10 +31,10 @@ public class AuthorizationServer extends AuthorizationServerConfigurerAdapter {
     private ClientDetailsService clientDetailsService;
 
     @Autowired
-    private AuthorizationCodeServices authorizationCodeServices;
+    private AuthenticationManager authenticationManager;
 
     @Autowired
-    private AuthenticationManager authenticationManager;
+    private AuthorizationCodeServices authorizationCodeServices;
 
 
     /**
@@ -79,7 +81,6 @@ public class AuthorizationServer extends AuthorizationServerConfigurerAdapter {
     public AuthorizationCodeServices authorizationCodeServices() {
         return new InMemoryAuthorizationCodeServices();
     }
-
 
     /**
      * 令牌访问端点配置
