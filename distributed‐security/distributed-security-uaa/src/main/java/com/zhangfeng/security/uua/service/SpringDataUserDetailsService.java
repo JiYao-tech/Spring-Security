@@ -32,6 +32,7 @@ public class SpringDataUserDetailsService implements UserDetailsService {
         for (int i = permissionDtoList.size() - 1; i >= 0; i--) {
             permissionArray[i] = permissionDtoList.get(i).getCode();
         }
+        System.out.println(permissionArray);
         //这里暂时使用静态数据
         UserDetails userDetails = User.withUsername(user.getUsername()).password(user.getPassword()).authorities(permissionArray).build();
         return userDetails;
