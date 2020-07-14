@@ -20,6 +20,10 @@ public class SpringDataUserDetailsService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String userName) throws UsernameNotFoundException {
+
+        //这里暂时使用静态数据
+        //UserDetails userDetails = User.withUsername("zhangsan").password("123").authorities("p1").build();
+
         //拿到用户信息
         UserDto user = userDao.getUserByUsername(userName);
         if(user == null){
@@ -32,9 +36,9 @@ public class SpringDataUserDetailsService implements UserDetailsService {
         for (int i = permissionDtoList.size() - 1; i >= 0; i--) {
             permissionArray[i] = permissionDtoList.get(i).getCode();
         }
-        System.out.println(permissionArray);
         //这里暂时使用静态数据
         UserDetails userDetails = User.withUsername(user.getUsername()).password(user.getPassword()).authorities(permissionArray).build();
+
         return userDetails;
     }
 }

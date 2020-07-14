@@ -41,9 +41,6 @@ public class UserDao {
                 "\t\tAND user_role.user_id = ?";
         List<PermissionDto> permissionDtoList = jdbcTemplate.query(sql, new Object[]{userId}, new BeanPropertyRowMapper<>(PermissionDto.class));
 
-        if(permissionDtoList!=null && permissionDtoList.size() >0){
-            return permissionDtoList;
-        }
-        return null;
+        return permissionDtoList;
     }
 }

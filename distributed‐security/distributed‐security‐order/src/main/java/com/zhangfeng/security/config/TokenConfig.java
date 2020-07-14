@@ -1,4 +1,4 @@
-package com.zhangfeng.security.uua.config;
+package com.zhangfeng.security.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
